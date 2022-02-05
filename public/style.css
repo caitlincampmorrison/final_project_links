@@ -1,0 +1,139 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+#app {
+  align-items: center;
+  justify-content: center;
+  display:flex;
+}
+
+#nav {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  height: 40px;
+  margin-top: 10px;
+  left: 50%;
+  align-content: center;
+  align-items: center;
+}
+hr{
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}
+#student_button {
+  margin-left: 30px;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#campus_button {
+  justify-content: center;
+  align-items: center;
+}
+#students-list {
+  display: flex;
+  flex-direction: column;
+  float: left;
+
+}
+#campuses-list {
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
+#student-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-color: black;
+  border-radius: 2pc;
+  float:right;
+}
+#student-form input{
+   width: 200px;
+   padding: 7.5px;
+}
+#student-form button{
+  padding: 7.5px;
+}
+#campus-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-color: black;
+  border-radius: 2pc;
+  float:right;
+}
+#campus-form input{
+  width: 200px;
+  padding: 7.5px;
+}
+#campus-form button{
+ padding: 7.5px;
+}
+#student-list {
+  display:flex;
+  align-items: left;
+  float:left;
+}
+#student-image{
+    border-radius: 50%;
+    box-shadow: 0 4px 6px 0 rgba(34, 60, 80, .16);
+    transition: all ease-in-out .2s;
+    display: flex;
+    align-items: center;
+    margin: 2px;
+}
+#college-image{
+  border-radius: 50%;
+  box-shadow: 0 4px 6px 0 rgba(34, 60, 80, .16);
+  transition: all ease-in-out .2s;
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.student-details {
+  align-content: center;
+  align-items: center;
+}
+
+.student-details h1{
+  text-align: center;
+}
+.student-details p{
+  text-align: center;
+}
+
+#student-update-form {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+}
+#campus-update-form {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+}
+#deletebutton {
+  margin-left: 4px;
+}
+#unregisterbutton {
+  margin-left: 4px;
+}
+.navlink {
+  padding-left: 3rem;
+  align-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
