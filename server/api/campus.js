@@ -10,6 +10,16 @@ app.get('/', async(req,res,next) => {
         next(ex)
     }
 })
+app.get("/:id", async (req, res, next) => {
+    try {
+      res.send(await Campus.findOne({
+            where: {id: req.params.id}
+      })
+      );
+    } catch (error) {
+      next(error);
+    }
+});
 
 app.post('/', async(req,res,next) => {
     try{

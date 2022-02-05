@@ -7,10 +7,6 @@ import axios from "axios";
 //ACTION TYPES
 const FETCH_STUDENTS_FROM_SERVER = "FETCH_STUDENTS_FROM_SERVER"
 const FETCH_CAMPUSES_FROM_SERVER = "FETCH_CAMPUSES_FROM_SERVER"
-const SELECT_STUDENT = "SELECT_STUDENT"
-const CLEAR_SELECTED_STUDENT = "CLEAR_SELECTED_STUDENT"
-const SELECT_CAMPUS = "SELECT_CAMPUS"
-const CLEAR_SELECTED_CAMPUS = "CLEAR_SELECTED_CAMPUS"
 const CREATE_CAMPUS = "CREATE_CAMPUS"
 const CREATE_STUDENT = "CREATE_STUDENT"
 const DELETE_STUDENT = "DELETE_STUDENT"
@@ -23,24 +19,6 @@ const UPDATE_CAMPUS_FILTER = "UPDATE_CAMPUS_FILTER"
 const UPDATE_STUDENT_SORT = "UPDATE_STUDENT_SORT"
 
 //ACTION CREATORS
-export const selectStudent = (student) => ({
-    type: SELECT_STUDENT,
-    student,
-})
-
-export const clearStudent = () => ({
-    type: CLEAR_SELECTED_STUDENT,
-})
-
-export const selectCampus = (campus) => ({
-    type: SELECT_CAMPUS,
-    campus,
-})
-
-export const clearCampus = () => ({
-    type: CLEAR_SELECTED_CAMPUS
-})
-
 export const getAttendees = (campus) => ({
     type: GET_ATTENDEES,
     campus
@@ -105,7 +83,7 @@ export const deleteCampus = (campus) => {
 }
 
 export const updateCampus = (campus) => {
-    console.log("UPDATE CAMPUS: " + campus.id, campus.campusName, campus.address, campus.description)
+    console.log("UPDATE CAMPUS: " + campus.id, campus.name, campus.address, campus.description)
     return async (dispatch) => {
         campus = (await axios.put(`/api/campuses/${campus.id}`, campus)).data
         //const { data } = await axios.put(`/api/campuses/${campus.id}`, {campus})
@@ -140,9 +118,6 @@ export const unregisterStudent = (student) => {
 const initialState = {
     campuses: [],
     students: [],
-    selectedButton: 0,
-    selectedStudent: {},
-    selectedCampus: {},
     attendees: [],
     campus_filter: 0,
     student_sort: {student_sort: "name"}
@@ -156,14 +131,6 @@ const reducer = ( state = initialState, action) => {
             return { ...state, campuses: action.campuses}
         case FETCH_STUDENTS_FROM_SERVER:
             return { ...state, students: action.students}
-        case SELECT_STUDENT:
-            return { ...state, selectedStudent: action.student}
-        case CLEAR_SELECTED_STUDENT:
-            return { ...state, selectedStudent: {}}
-        case SELECT_CAMPUS: 
-            return { ...state, selectedCampus: action.campus}
-        case CLEAR_SELECTED_CAMPUS:
-            return { ...state, selectedCampus: {}} 
         case CREATE_CAMPUS:
             return { ...state, campuses:[...state.campuses, action.campuses]}
         case CREATE_STUDENT:
@@ -173,9 +140,9 @@ const reducer = ( state = initialState, action) => {
         case DELETE_CAMPUS:
             return { ...state, campuses: state.campuses.filter((campus)=>campus.id !== action.campus)}
         case UPDATE_CAMPUS:
-            return { ...state, selectedCampus: action.campus}
+            return { ...state, campus: action.campus}
         case UPDATE_STUDENT:
-            return { ...state, selectedStudent: action.student}
+            return { ...state, student: action.student}
         case GET_ATTENDEES:
             let students = []
             students.filter(student => {
@@ -188,7 +155,7 @@ const reducer = ( state = initialState, action) => {
                 console.log(">>> " + student)
             })
         case UNREGISTER_STUDENT:
-            return { ...state, selectedStudent: action.student}
+            return { ...state, student: action.student}
         case UPDATE_CAMPUS_FILTER:
             return { ...state, campus_filter: action.number}
         case UPDATE_STUDENT_SORT:

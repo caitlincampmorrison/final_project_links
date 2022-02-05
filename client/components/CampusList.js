@@ -3,8 +3,6 @@ import {connect} from "react-redux"
 import { selectCampus, deleteCampus } from "../store"
 import CampusForm from './CampusForm'
 import { Link } from "react-router-dom";
-import SingleCampus from "./SingleCampus";
-
 
 const CampusList = ( {campuses, students, selectCampus, deleteCampus, campus_filter})  => {
     let count = 0

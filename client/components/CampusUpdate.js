@@ -1,16 +1,14 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { updateCampus, selectedCampus } from "../store"
-import { Link } from 'react-router-dom';
-
+import { updateCampus } from "../store"
 
 class CampusUpdate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            campusName: props.selectedCampus.name,
-            address: props.selectedCampus.address,
-            description: props.selectedCampus.description
+            campusName: props.campus.name,
+            address: props.campus.address,
+            description: props.campus.description
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,10 +22,11 @@ class CampusUpdate extends React.Component {
         ev.preventDefault()
         const { campusName, address, description } = this.state
         console.log(campusName)
-        console.log(this.props.selectedCampus.id)
-        this.props.updateCampus({id: this.props.selectedCampus.id, campusName, address, description})
+        console.log(this.props.campus.id)
+        this.props.updateCampus({id: this.props.campus.id, campusName, address, description})
     }
     render(){
+        const {campus} = this.props
         const {campusName, address, description} = this.state
         const { handleChange, handleSubmit} = this
 
@@ -56,11 +55,6 @@ class CampusUpdate extends React.Component {
         )
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        selectedCampus: state.selectedCampus,
-    }
-}
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -69,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampusUpdate)
+export default connect(null, mapDispatchToProps)(CampusUpdate)

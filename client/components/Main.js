@@ -5,11 +5,9 @@ import { fetchCampusesFromServer, fetchStudentsFromServer } from '../store'
 import CampusList from './CampusList';
 import StudentList from './StudentList';
 import Nav from './Nav';
-import CampusForm from './CampusForm'
 import SingleCampus from './SingleCampus'
 import StudentForm from './StudentForm';
 import SingleStudent from './SingleStudent2'
-import NotFound from './NotFound'
 
 class Main extends React.Component {
   async componentDidMount(){

@@ -10,7 +10,7 @@ app.get('/', async(req,res,next) => {
         next(ex)
     }
 })
-/*
+
 app.get("/:id", async (req, res, next) => {
     try {
       res.send(await Student.findOne({
@@ -21,7 +21,7 @@ app.get("/:id", async (req, res, next) => {
       next(error);
     }
 });
-*/
+
 app.post('/', async(req,res,next) => {
     try{
         const data = await Student.create({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email,imageUrl: '/student.jpg'})

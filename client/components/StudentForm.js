@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import { createStudent } from "../store"
-import { Link } from 'react-router-dom';
 
 const defaultState = {
     first_name: '',

@@ -1,8 +1,6 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
 import { updateStudent } from "../store"
-import { Link } from 'react-router-dom';
-
 
 class StudentUpdate extends React.Component {
     constructor(props) {
@@ -26,11 +24,13 @@ class StudentUpdate extends React.Component {
         ev.preventDefault()
         const { first_name, last_name, email, gpa} = this.state
         const campus_name = document.getElementById(`campus_name`).value
+        console.log("CN ", campus_name)
         this.props.updateStudent({id: this.props.student.id, first_name, last_name, email, gpa, campus_name})
     }
     render(){
-        const {student} = this
-        console.log(student)
+        const {student} = this.props
+        const {first_name, last_name, email, gpa } = this.state
+        console.log("THIS: ", this.props)
         const { handleChange, handleSubmit} = this
         
         return (
@@ -61,10 +61,10 @@ class StudentUpdate extends React.Component {
                 />  
                 <select onChange={handleChange} id="campus_name">
                     <option key={this.props.student.id} 
-                        value={this.props.student.id}> 
+                        value={this.props.student.campus_name}> 
                         {this.props.student.campus_name} 
                     </option>
-                    {this.props.campuses.filter(campus => campus.name !== this.props.selectedStudent.campus_name)
+                    {this.props.campuses.filter(campus => campus.name !== this.props.student.campus_name)
                     .map((campus) => (
                         <option key={campus.id} value={campus.name}>{campus.name}</option>
                         ))}
@@ -75,10 +75,11 @@ class StudentUpdate extends React.Component {
         )
     }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, other) => {
+    console.log("MAP ", other)
     return {
         campuses: state.campuses,
-        students: state.students
+        students: state.students,
     }
 }
 

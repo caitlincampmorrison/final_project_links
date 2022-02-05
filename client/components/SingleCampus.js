@@ -35,7 +35,7 @@ class SingleCampus extends React.Component {
                     )
                 }
                 <hr></hr>
-                <CampusUpdate />
+                <CampusUpdate campus={campus}/>
             </div>
         )
    }

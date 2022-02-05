@@ -2,7 +2,6 @@ import React from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom";
 import StudentUpdate from "./StudentUpdate";
-import NotFound from "./NotFound";
 
 class SingleStudent extends React.Component{
     render(){
@@ -13,7 +12,7 @@ class SingleStudent extends React.Component{
       if(student.campus_name){
         campus = this.props.campuses.filter(c => c.name === student.campus_name)
       }
-      console.log(campus)
+      console.log("CAMPUS0: ",campus[0])
       return (
         <div className="student-details"> 
             <img id="student-image"src={student.imageUrl} />
@@ -28,7 +27,7 @@ class SingleStudent extends React.Component{
     }
     
 }
- //<StudentUpdate student={student}/>
+
 const mapStateToProps = (state) => {
     return {
       campuses: state.campuses,

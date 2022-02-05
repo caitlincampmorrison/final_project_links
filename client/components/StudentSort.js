@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom" //new
-import Main from './Main' //new
 import {updateStudentSort} from '../store'
 
 
